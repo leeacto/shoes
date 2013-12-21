@@ -2,9 +2,11 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 	include BCrypt
+
 	validates_presence_of :username, :email
-	validates_uniqueness_of :username
-	validates_uniqueness_of :email
+	validates_uniqueness_of :username, :email
+
+  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
 	def password
 		@password ||= Password.new(password_hash)

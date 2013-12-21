@@ -11,6 +11,7 @@ group :test, :development do
 	gem 'factory_girl'
 	gem 'pry'
 	gem 'rspec-rails'
+	gem 'capybara'
 end
 
 # Use SCSS for stylesheets

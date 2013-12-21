@@ -11,6 +11,11 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 		@user.password = params[:password]
 		@user.save!
+		redirect_to @user
+	end
+
+	def show
+		@user = User.find(params[:id])
 	end
 
 	def update
@@ -24,6 +29,6 @@ class UsersController < ApplicationController
 	private
 		
 		def user_params
-			params.require(:username, :email, :password)
+			params.require(:user).permit(:username, :email, :password, :password_confirmation)
 		end
 end
