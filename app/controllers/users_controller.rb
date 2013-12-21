@@ -10,8 +10,13 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		@user.password = params[:password]
-		@user.save!
-		redirect_to @user
+		if @user.save
+			session[:user_id] = @user.id
+			redirect_to @user
+	  else
+			flash[:error] = "The Username/Password is Invalid"
+			redirect_to new_user_path
+		end
 	end
 
 	def show
