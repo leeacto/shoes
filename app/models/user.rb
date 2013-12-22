@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 	include BCrypt
+	has_many :pairs
 
 	validates_presence_of :username, :email
 	validates_uniqueness_of :username, :email

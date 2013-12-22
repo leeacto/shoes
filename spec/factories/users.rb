@@ -13,5 +13,3 @@ FactoryGirl.define do
 		f.admin									 false
   end
 end
-
-

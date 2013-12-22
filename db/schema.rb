@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221031958) do
+ActiveRecord::Schema.define(version: 20131221191108) do
+
+  create_table "pairs", force: true do |t|
+    t.text     "brand"
+    t.integer  "year"
+    t.string   "model"
+    t.string   "nickname"
+    t.integer  "condition"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "pairs", ["brand"], name: "index_pairs_on_brand", using: :btree
+  add_index "pairs", ["condition"], name: "index_pairs_on_condition", using: :btree
+  add_index "pairs", ["model"], name: "index_pairs_on_model", using: :btree
+  add_index "pairs", ["nickname"], name: "index_pairs_on_nickname", using: :btree
+  add_index "pairs", ["year"], name: "index_pairs_on_year", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     else
 		  if @user.password == params[:session][:password]
 				session[:user_id] = @user.id
-				redirect_to restaurants_path
+				redirect_to @user
 			else
 				flash[:error] = "Username or Password is incorrect"
 				redirect_to login_path
