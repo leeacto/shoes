@@ -3,6 +3,7 @@ require 'bcrypt'
 class User < ActiveRecord::Base
 	include BCrypt
 	has_many :pairs
+	has_many :follows, foreign_key: :follower_id, primary_key: :id
 
 	validates_presence_of :username, :email
 	validates_uniqueness_of :username, :email

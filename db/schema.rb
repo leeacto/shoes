@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221191108) do
+ActiveRecord::Schema.define(version: 20131222163307) do
+
+  create_table "follows", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
 
   create_table "pairs", force: true do |t|
     t.text     "brand"
@@ -23,8 +32,10 @@ ActiveRecord::Schema.define(version: 20131221191108) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "available",   default: false
   end
 
+  add_index "pairs", ["available"], name: "index_pairs_on_available", using: :btree
   add_index "pairs", ["brand"], name: "index_pairs_on_brand", using: :btree
   add_index "pairs", ["condition"], name: "index_pairs_on_condition", using: :btree
   add_index "pairs", ["model"], name: "index_pairs_on_model", using: :btree

@@ -2,6 +2,7 @@ Shoes::Application.routes.draw do
   root 'pages#index'
 	resources :users do
 		resources :pairs
+		resources :follows
 	end
 
 	resources :sessions, only: [:create]
