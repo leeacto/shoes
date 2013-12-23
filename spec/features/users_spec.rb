@@ -1,3 +1,4 @@
+include UserHelper
 require 'spec_helper'
 
 describe User do
@@ -13,6 +14,15 @@ describe User do
 					click_button 'Create User'
 				}.to change(User, :count).by(1)
 			end
+		end
+	end
+	
+	describe 'following' do
+		before(:each) do
+			user_login
+		end
+
+		it 'follows a user' do
 		end
 	end
 end

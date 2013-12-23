@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :admin, class: User do |f|
-    f.username               'username'
+    f.username               'admin'
     f.email                  'email@email.com'
     f.password               'password'
 		f.admin									 false
