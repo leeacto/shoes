@@ -15,20 +15,19 @@ userTable.prototype.loadUsers = function (){
 
 function Blurb (el) {
 	this.el = $('#' + el);
-	(this.el).find('.button_to').on('submit', function(e){
+	this.id = el;
+	this.follow = this.el.find('.follow');
+	this.unfollow = this.el.find('.unfollow');
+	var self = this;
+	(this.follow).on('submit', function(e){
 		e.preventDefault();
-		var url = '';
-		var user_id = '';
-		//This URL is wrong. write out full URL not path
-		if(this.text === 'Follow') {
-			url = 'user_follows_path';
-		} else {
-			url = 'user_follow_path';
-		}
+		var url = (this.action).substring((this.action).indexOf('user'),(this.action).indexOf('?'));
 		$.ajax({
 			url: url,
 			method: 'POST',
-			data: { id: user_id }
+			data: { id: self.id }
+		}).done(function(url){
+		console.log(url);
 		});
 	});
 }
