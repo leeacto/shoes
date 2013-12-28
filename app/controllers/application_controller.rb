@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
 		User.find(session[:user_id]) if session[:user_id]
 	end
 	helper_method :current_user
+
+	def follows?(user_id)
+		current_user.follows.include?(User.find(user_id))
+	end
+	helper_method :follows?
 end
