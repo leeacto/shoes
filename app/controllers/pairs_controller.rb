@@ -1,4 +1,9 @@
 class PairsController < ApplicationController
+	def index
+		@user = User.find(params[:user_id])
+		@pairs = @user.pairs
+	end
+
 	def new
 		@user = current_user
 		@pair = Pair.new

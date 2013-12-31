@@ -1,0 +1,4 @@
+<%= @user.username %>'s Shoes <br><br>
+<% @pairs.each do |p| %>
+	<%= render partial: 'pair', locals: { pair: p } %>
+<% end %>

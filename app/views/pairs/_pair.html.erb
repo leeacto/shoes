@@ -1,0 +1,11 @@
+<table>
+	<tr>
+		<td><%= pair.nickname %>
+	</tr>
+	<tr>
+		<td>
+			Brand: <%= link_to pair.brand, user_pair_path(@user, pair) %> Model: <%= pair.model %>
+		</td>
+	</tr>
+	<tr><td><%= pair.condition %>/10</td></tr>
+</table>
