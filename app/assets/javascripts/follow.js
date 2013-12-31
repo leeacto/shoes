@@ -50,7 +50,7 @@ function Blurb (el, table) {
 	$(this.unfollow).on('submit', function(e){
 		e.preventDefault();
 		$.ajax({
-			url: "users/" + self.current_user + "/follows/unfollow",
+			url: "/follows/unfollow",
 			method: 'POST',
 			data: { id: self.id }
 		}).done(function(data){

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 	end
 
 	def following
-		@followings = self.followings
+		@followings = self.followeds
 	end
 
 	private

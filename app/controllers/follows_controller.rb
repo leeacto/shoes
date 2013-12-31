@@ -10,8 +10,8 @@ class FollowsController < ApplicationController
 	end
 
 	def unfollow
-		Follow.where(follower_id: current_user.id, followed_id: params[:id]).destroy
-		binding.pry
+		f = Follow.where(follower_id: current_user.id, followed_id: params[:id])
+		f.first.destroy if !f.empty?
 		if request.xhr?
 			render json: {}
 		else

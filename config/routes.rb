@@ -3,9 +3,9 @@ Shoes::Application.routes.draw do
 	resources :users do
 		resources :pairs
 		resources :follows
-		post '/follows/unfollow', to: 'follows#unfollow'
 	end
 	
+	post '/follows/unfollow', to: 'follows#unfollow'
 	resources :sessions, only: [:create]
 	get '/login', :to => 'sessions#new'
 	get '/logout', :to => 'sessions#destroy'
