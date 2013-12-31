@@ -38,7 +38,7 @@ function Blurb (el, table) {
 	$(this.follow).on('submit', function(e){
 		e.preventDefault();
 		$.ajax({
-			url: "users/" + self.current_user + "/follows/",
+			url: "/follows/follow",
 			method: 'POST',
 			data: { id: self.id }
 		}).done(function(data){

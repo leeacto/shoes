@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-	def create
+	def follow
 		f = Follow.where(follower_id: current_user.id, followed_id: params[:id]).first_or_create
 		if request.xhr?
 			render json: {}
@@ -17,16 +17,6 @@ class FollowsController < ApplicationController
 		else
 			#render json: {url: "users/#{current_user.id}/follow/?id=#{params[:id]}"}
 			redirect_to users_path
-		end
-	end
-
-	def destroy
-		Follow.where(follower_id: current_user.id, followed_id: params[:id]).destroy
-		if request.xhr?
-			redirect_to users_path
-		else
-			#render json: {url: "users/#{current_user.id}/follow/?id=#{params[:id]}"}
-			render json: {}
 		end
 	end
 end
