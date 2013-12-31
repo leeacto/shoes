@@ -1,6 +1,8 @@
 Shoes::Application.routes.draw do
   root 'pages#index'
 	resources :users do
+		get '/following', to: 'users#following'
+		get '/followers', to: 'users#followers'
 		resources :pairs
 		resources :follows
 	end

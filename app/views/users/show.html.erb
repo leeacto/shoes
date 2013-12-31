@@ -1,7 +1,9 @@
 <%= @user.username %>'s Profile
 
 Shoes: <%= @user.pairs.count %><br>
-Available For Sale: 
+Available For Sale:<br> 
+Followers: <%= link_to @user.followeds.count, user_following_path(@user) %><br>
+Followers: <%= link_to @user.followeds.count, user_followers_path(@user) %><br>
 
 <% if current_user && current_user != @user %>
 		<%= button_to 'Unfollow', { action: 'unfollow', controller: 'follows'},
