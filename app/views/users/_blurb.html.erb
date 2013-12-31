@@ -3,7 +3,7 @@
 	Shoes: <%= user.pairs.count %><br>
 	Available For Sale: 
 
-	<% if current_user != user %>
+	<% if current_user && current_user != user %>
 			<%= button_to 'Unfollow', { action: 'destroy', controller: 'follows',
 					user_id: current_user.id, id: user.id }, form_class: 'unfollow' %>
 			<%= button_to 'Follow', { action: 'create', controller: 'follows',
