@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222163307) do
+ActiveRecord::Schema.define(version: 20140101002907) do
 
   create_table "follows", force: true do |t|
     t.integer  "follower_id"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20131222163307) do
   add_index "pairs", ["model"], name: "index_pairs_on_model", using: :btree
   add_index "pairs", ["nickname"], name: "index_pairs_on_nickname", using: :btree
   add_index "pairs", ["year"], name: "index_pairs_on_year", using: :btree
+
+  create_table "photos", force: true do |t|
+    t.integer  "pair_id"
+    t.string   "url"
+    t.integer  "ordinal",    default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["pair_id"], name: "index_photos_on_pair_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

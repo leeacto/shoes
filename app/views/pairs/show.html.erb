@@ -1,3 +1,7 @@
+<% if current_user && current_user == @pair.user %>
+	Allow user to upload pictures
+<% end %>
+
 <table>
 	<tr>
 		<td>Brand</td><td><%= @pair.brand %><td>
