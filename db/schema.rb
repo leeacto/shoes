@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101002907) do
+ActiveRecord::Schema.define(version: 20140106161456) do
 
   create_table "follows", force: true do |t|
     t.integer  "follower_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140101002907) do
     t.integer  "ordinal",    default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "shot"
   end
 
   add_index "photos", ["pair_id"], name: "index_photos_on_pair_id", using: :btree

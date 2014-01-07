@@ -1,8 +1,19 @@
 <% if current_user && current_user == @pair.user %>
-	Allow user to upload pictures
+	<%= form_for @photo, :html => {:multipart => true} do |f| %>
+		<%= hidden_field_tag 'photo[pair_id]', @pair.id %>
+		<%= f.file_field :shot %>
+		<%= f.submit 'Add Photo' %>
+	<% end %>
 <% end %>
 
+<%= image_tag @main_url %><br>
+
 <table>
+	<tr>
+	  <% @pair.photos.each do |p| %>
+			<%= image_tag p.shot_url(:thumb) %>
+		<% end %>
+	</tr>
 	<tr>
 		<td>Brand</td><td><%= @pair.brand %><td>
 		<td>Model</td><td><%= @pair.model %><td>
@@ -14,6 +25,9 @@
 	</tr>
 	<tr>
 		<td>Description</td><td><%= @pair.description %></td>
+	</tr>
+	<tr>
+		<td>Available?</td><td><%= @pair.available %></td>
 	</tr>
 </table>
 

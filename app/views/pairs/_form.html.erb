@@ -1,4 +1,4 @@
-<%= form_for [@user,@pair] do |f| %>
+<%= form_for ([@user,@pair]) do |f| %>
 	<%= f.label :brand %>
 	<%= f.text_field :brand %><br>
 	<%= f.label :model %>
@@ -6,7 +6,7 @@
 	<%= f.label :nickname %>
 	<%= f.text_field :nickname %><br>
 	<%= f.label :condition %>
-	<%= f.number_field :condition %><br>
+	<%= f.number_field :condition, value: 1 %><br>
 	<%= f.label :description %>
 	<%= f.text_area :description, size: '30x5' %><br>
 	<%= f.submit %>

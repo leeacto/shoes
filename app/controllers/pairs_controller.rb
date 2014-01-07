@@ -6,11 +6,13 @@ class PairsController < ApplicationController
 
 	def new
 		@user = current_user
-		@pair = Pair.new
+		@pair = @user.pairs.build
 	end
 
 	def create
+		@user = current_user
 		@pair = current_user.pairs.build(pair_params)
+
 		if @pair.save
 			flash[:success] = 'Shoes Saved!'
 			redirect_to user_pair_path(current_user, @pair)
@@ -22,12 +24,21 @@ class PairsController < ApplicationController
 
 	def show
 		@pair = Pair.find(params[:id])
+		@main_url = main_photo(@pair)	
+		@photo = Photo.new
 	end
-
 
 	private
 		
 		def pair_params
 			params.require(:pair).permit(:brand, :model, :nickname, :condition, :description)
+		end
+
+		def main_photo(pair)
+			if pair.photos
+				pair.photos.first.shot_url(:main)
+			else
+				'http://6.kicksonfire.net/wp-content/uploads/2008/07/air-jordan-1-i-black-white-air-jordan-countdown-package-1.jpg'
+			end
 		end
 end

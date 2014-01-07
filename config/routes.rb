@@ -7,6 +7,7 @@ Shoes::Application.routes.draw do
 		resources :follows
 	end
 	
+	resources :photos
 	post '/follows/unfollow', to: 'follows#unfollow'
 	post '/follows/follow', to: 'follows#follow'
 	resources :sessions, only: [:create]
