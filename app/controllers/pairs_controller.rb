@@ -35,7 +35,7 @@ class PairsController < ApplicationController
 		end
 
 		def main_photo(pair)
-			if pair.photos
+			if pair.photos.count > 0
 				pair.photos.first.shot_url(:main)
 			else
 				'http://6.kicksonfire.net/wp-content/uploads/2008/07/air-jordan-1-i-black-white-air-jordan-countdown-package-1.jpg'

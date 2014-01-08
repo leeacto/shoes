@@ -10,6 +10,7 @@ gem 'pg'
 gem 'fog'
 
 group :test, :development do
+	gem 'better_errors'
 	gem 'factory_girl_rails'
 	gem 'launchy'
 	gem 'pry'

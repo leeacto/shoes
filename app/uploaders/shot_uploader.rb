@@ -29,15 +29,29 @@ class ShotUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  # Create different versions of your uploaded files:
-	 version :main do
-     process :resize_to_fit => [300, 300]
-	 end
+	version :main do
+	  process :matte
+    process :resize_to_fit => [300, 300]
+	end
 
-   version :thumb do
-     process :resize_to_fit => [100, 100]
-   end
+  version :thumb do
+    process :resize_to_fit => [100, 100]
+  end
+	
+	def matte
+		manipulate! do |img|
+		  w = img[:width]
+			h = img[:height]
+			pad = ((w-h).to_f.abs/2).to_i
+			if w > h
+				img = img.frame "0x#{pad}"
+			elsif h > w
+				img = img.frame "#{pad}x0"
+			end
+		end
+	end
 
+  
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
    def extension_white_list

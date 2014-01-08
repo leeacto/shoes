@@ -16,5 +16,5 @@ Followers: <%= link_to @user.followers.count, user_followers_path(@user) %><br>
 <br>
 
 <% @user.pairs.each do |p| %>
-	<%= link_to image_tag(p.thumb_url), user_pair_path(@user, p) %>
+	<%= link_to image_tag(p.thumb_url), user_pair_path(@user, p) if p.thumb_url%>
 <% end %>
