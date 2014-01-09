@@ -35,6 +35,7 @@ class ShotUploader < CarrierWave::Uploader::Base
 	end
 
   version :thumb do
+	  process :matte
     process :resize_to_fit => [100, 100]
   end
 	
@@ -44,10 +45,12 @@ class ShotUploader < CarrierWave::Uploader::Base
 			h = img[:height]
 			pad = ((w-h).to_f.abs/2).to_i
 			if w > h
-				img = img.frame "0x#{pad}"
+				 img.frame "0x#{pad}"
 			elsif h > w
-				img = img.frame "#{pad}x0"
+				 img.frame "#{pad}x0"
 			end
+			img = yield(img) if block_given?
+			img
 		end
 	end
 

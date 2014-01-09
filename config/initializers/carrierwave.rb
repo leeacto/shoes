@@ -1,4 +1,5 @@
 CarrierWave.configure do |config|
+require 'carrierwave/processing/mini_magick'
 	config.fog_credentials = {
 		:provider		=> 'AWS',
 		:aws_access_key_id				=> ENV['S3_KEY'],
