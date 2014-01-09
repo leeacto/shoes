@@ -17,3 +17,6 @@
 
 #Ignore env yml
 /config/local_env.yml
+
+#Ignore uploaded files
+/public/uploads/photo
