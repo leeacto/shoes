@@ -1,0 +1,6 @@
+<%= render partial: 'form' %>
+
+<% @pair.photos.each do |p| %>
+	<%= image_tag p.shot_url(:thumb) %>
+	<%= link_to 'Delete', photo_path(p), method: 'DELETE' %>
+<% end %>

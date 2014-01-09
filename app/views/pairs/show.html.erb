@@ -11,8 +11,9 @@
 <table>
 	<tr>
 	  <% @pair.photos.each do |p| %>
-			<%= image_tag p.shot_url(:thumb) %>
+			<td><%= image_tag p.shot_url(:thumb) %></td>
 		<% end %>
+		<%= link_to 'Edit Pair', edit_user_pair_path(current_user, @pair) if current_user && current_user == @pair.user %>
 	</tr>
 	<tr>
 		<td>Brand</td><td><%= @pair.brand %><td>

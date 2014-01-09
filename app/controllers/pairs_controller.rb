@@ -28,6 +28,11 @@ class PairsController < ApplicationController
 		@photo = Photo.new
 	end
 
+	def edit
+		@user = current_user
+		@pair = Pair.find(params[:id])
+	end
+
 	private
 		
 		def pair_params

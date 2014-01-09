@@ -9,6 +9,17 @@ class PhotosController < ApplicationController
 		redirect_to user_pair_path(current_user, photo.pair)
 	end
 
+	def destroy
+		photo = Photo.find(params[:id])
+	
+		if photo.destroy
+			flash[:success] = 'Photo Deleted'
+		else
+			flash[:error] = 'Error: Photo not deleted'
+	  end
+		redirect_to edit_user_pair_path(current_user, photo.pair)
+	end
+
 	private
 		def photo_params
 			params.require(:photo).permit(:pair_id, :url, :ordinal, :shot)
