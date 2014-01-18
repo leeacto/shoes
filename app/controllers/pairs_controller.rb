@@ -22,6 +22,18 @@ class PairsController < ApplicationController
 		end
 	end
 
+	def update
+		@pair = Pair.find(params[:id])
+		@pair.update_attributes(pair_params)
+		if @pair.save
+			flash[:success] = 'Shoes Updated!'
+			redirect_to user_pair_path(current_user, @pair)
+		else
+			flash[:error] = 'Your Shoes Were Not Updated'
+			render 'edit'
+		end
+	end
+
 	def show
 		@pair = Pair.find(params[:id])
 		@main_url = main_photo(@pair)	
