@@ -18,6 +18,7 @@ group :test, :development do
 	gem 'capybara'
 end
 
+gem 'slim-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

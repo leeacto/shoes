@@ -1,0 +1,5 @@
+.thumb
+  = link_to image_tag(pair.thumb_url), user_pair_path(user, pair) 
+  br
+  #{pair.brand} - #{pair.model}
+  =pair.nickname if pair.nickname
